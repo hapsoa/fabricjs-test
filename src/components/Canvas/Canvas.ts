@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
-// import '@/lib/fabric.min.js';
 import { fabric } from 'fabric';
+import _ from 'lodash';
 
 @Component({})
 export default class Canvas extends Vue {
@@ -38,12 +38,23 @@ export default class Canvas extends Vue {
   }
 
   public addCustomImage(url: string) {
-    fabric.Image.fromURL(
-      url,
-      img => {
-        this.canvas.add(img);
-      },
-    );
+    fabric.Image.fromURL(url, img => {
+      this.canvas.add(img);
+    });
+  }
+
+  public deleteSelectedAsset(e: KeyboardEvent) {
+    console.log(e);
+    if (e.key === 'Backspace') {
+      console.log('delete 작동');
+      this.canvas.remove(this.canvas.getActiveObject());
+    }
+  }
+
+  public cancelSelect() {
+    this.canvas.discardActiveObject();
+    this.canvas.requestRenderAll();
+    // this.canvas.setActiveObject(null);
   }
 
   private mounted() {
@@ -58,5 +69,11 @@ export default class Canvas extends Vue {
     });
 
     this.canvas.add(rect);
+
+    const canvasWrapper = document.getElementById('canvas-wrapper');
+    if (!_.isNil(canvasWrapper)) {
+      canvasWrapper.tabIndex = 1000;
+      canvasWrapper.addEventListener('keyup', this.deleteSelectedAsset, false);
+    }
   }
 }

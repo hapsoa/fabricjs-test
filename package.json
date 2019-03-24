@@ -10,6 +10,7 @@
   "dependencies": {
     "@types/fabric": "^2.6.3",
     "fabric": "^2.7.0",
+    "lodash": "^4.17.11",
     "register-service-worker": "^1.6.2",
     "tslint-config-prettier": "^1.18.0",
     "vue": "^2.6.6",
@@ -20,6 +21,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.123",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-pwa": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",

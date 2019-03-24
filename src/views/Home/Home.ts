@@ -33,6 +33,11 @@ export default class Home extends Vue {
     this.$refs.image.click();
   }
 
+  public cancelSelect() {
+    console.log('선택 취소');
+    this.$refs.canvas.cancelSelect();
+  }
+
   public onFilePicked(e: any) {
     const files = e.target.files;
     if (files[0] !== undefined) {

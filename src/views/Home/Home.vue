@@ -3,7 +3,8 @@
     <v-layout>
       <v-flex>
         <v-btn @click="addRect">의상 추가</v-btn>
-        <v-btn @click="addImage">Image 추가</v-btn>
+        <v-btn @click="addImage">정해진 Image 추가</v-btn>
+        <v-btn @click="cancelSelect">선택 취소</v-btn>
         <Canvas ref="canvas"/>
       </v-flex>
       <v-flex>
